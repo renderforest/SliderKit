@@ -28,13 +28,21 @@ import UIKit
 public struct TooltipData {
     public var image: UIImage
     public var label: UILabel
+    
+    public init(
+        image: UIImage,
+        label: UILabel
+    ) {
+        self.image = image
+        self.label = label
+    }
 }
 
 /// Custom subtype of slider with tooltip view
 open class TooltipSlider: UISlider {
 
     var tooltipView: TooltipView?
-    var onValueChanged: ((Double) -> Void)?
+    open var onValueChanged: ((Double) -> Void)?
     
     public init() {
         
