@@ -153,10 +153,14 @@ open class TooltipView: UIView {
     func set(data: TooltipData) {
         let tooltipImageView = UIImageView()
         tooltipImageView.image = data.image
+        tooltipLabel = data.label
         
         addSubview(tooltipImageView)
+        tooltipImageView.addSubview(tooltipLabel)
         
         tooltipImageView.translatesAutoresizingMaskIntoConstraints = false
+        tooltipLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate(
             [
                 tooltipImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -165,17 +169,12 @@ open class TooltipView: UIView {
                 tooltipImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
         )
-        
-        tooltipLabel = data.label
-        tooltipImageView.addSubview(tooltipLabel)
-        
-        tooltipLabel.translatesAutoresizingMaskIntoConstraints = false
+    
         NSLayoutConstraint.activate(
             [
                 tooltipLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
                 tooltipLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-                tooltipLabel.topAnchor.constraint(equalTo: topAnchor),
-                tooltipLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+                tooltipLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8)
             ]
         )
     }
